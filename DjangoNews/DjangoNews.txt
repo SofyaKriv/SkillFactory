@@ -1,0 +1,81 @@
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from news.models import *
+user1 = User.objects.create(username='One')
+user2 = User.objects.create(username='Two')
+author1 = Author.objects.create(user=user1)
+author2 = Author.objects.create(user=user2)
+Category.objects.create(theme="Roses")
+Category.objects.create(theme="Lily")
+Category.objects.create(theme="Sunflowers")
+Category.objects.create(theme="Cactus")
+Post.objects.create(author=author1, category_type='A', title_post='Розы: виды, правила
+ посадки и ухода', text_post='Розы появились на земле очень давно, есть даже такая версия,
+ что это произошло приблизительно 24 миллионов лет назад. А вот выращивать такие красивые цветы в саду стали всего лишь несколько столетий назад.')
+Post.objects.create(author=author2, category_type='A', title_post='Садовые Лилии', tex
+t_post='Лилии относятся к числу самых популярных цветов, уступая только розам. Различные в
+иды и сорта этих растений встречаются практически во всех уголках мира. Они имеют различны
+е формы, размеры и окраску. Это королевский цветок - многие королевские семьи размещают ег
+о на гербах.')
+Post.objects.create(author=author1, category_type='N', title_post='Международный конку
+рс цветов', text_post='В этом году Международный конкурс цветов пройдет в Монако. 1 октябр
+я в княжестве Монако пройдет награждение победителей конкурса')
+Post.objects.get(id=1).category.add(Category.objects.get(id=1))
+Post.objects.get(id=2).category.add(Category.objects.get(id=2))
+Post.objects.get(id=3).category.add(Category.objects.get(id=1))
+Post.objects.get(id=3).category.add(Category.objects.get(id=2))
+Comment.objects.create(post=Post.objects.get(id=1), user=user2, text_comment='Как нель
+зя кстати')
+Comment.objects.create(post=Post.objects.get(id=1), user=user1, text_comment='Отличная
+ статья')
+Comment.objects.create(post=Post.objects.get(id=2), user=user1, text_comment='Прямо в
+точку')
+Comment.objects.create(post=Post.objects.get(id=3), user=user2, text_comment='Обязател
+ьно буду')
+Post.objects.get(id=1).like()
+Post.objects.get(id=1).like()
+Post.objects.get(id=1).like()
+Post.objects.get(id=1).dlike()
+Post.objects.get(id=2).like()
+Post.objects.get(id=2).like()
+Post.objects.get(id=2).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=1).dislike()
+Post.objects.get(id=2).dislike()
+Post.objects.get(id=2).dislike()
+Post.objects.get(id=3).dislike()
+Post.objects.get(id=3).dislike()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=3).like()
+Comment.objects.get(id=1).dislike()
+Comment.objects.get(id=1).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=3).dislike()
+Author.objects.get(id=1).update_rating()
+Author.objects.get(id=2).update_rating()
+Author.objects.all().order_by('-user_rating').values('user', 'user_rating')[0]
+Post.objects.all().order_by('-rate_post').values('time_creation', 'author', 'rate_post', 'title_post')[0]
+post1 = Post.objects.all().order_by('-rate_post').values('id')[0]
+Post.objects.get(id=post1['id']).preview()
+Comment.objects.filter(post_id=post1['id']).values('date_comment', 'user', 'rate_comme
+nt', 'text_comment')
+
+
+
+
+
+
+
+
+
+
+
