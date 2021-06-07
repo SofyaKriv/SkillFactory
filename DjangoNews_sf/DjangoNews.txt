@@ -66,8 +66,7 @@ Author.objects.all().order_by('-user_rating').values('user', 'user_rating')[0]
 Post.objects.all().order_by('-rate_post').values('time_creation', 'author', 'rate_post', 'title_post')[0]
 post1 = Post.objects.all().order_by('-rate_post').values('id')[0]
 Post.objects.get(id=post1['id']).preview()
-Comment.objects.filter(post_id=post1['id']).values('date_comment', 'user', 'rate_comme
-nt', 'text_comment')
+Comment.objects.filter(post_id=post1['id']).values('date_comment', 'user', 'rate_comment', 'text_comment')
 
 
 
