@@ -1,0 +1,73 @@
+      #navbar {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 550px;
+        text-align: center;
+        font-size: 20pt;
+        background-color: rgb(0,101,99);
+        float: right;
+        margin-top: 30px;
+      }
+      #navbar li { display: inline;}
+
+      h1{
+        margin-left: 20px;
+        color: white;
+        display: inline-block;
+      }
+
+      .nmain{
+        text-align: center;
+        color: black;
+        font-size: 36pt;
+      }
+
+      .child-nmain{
+        width: 50%;
+        display: inline;
+      }
+
+      img[name='menu']{
+        display: inline-block;
+      }
+	  
+	  img[name="contact"]{
+		display:block;
+		margin:auto;
+	  }
+	  
+      .header{
+        background-color: rgb(0,101,99);
+      }
+      #navbar a {
+        color: #fff;
+        padding: 5px 10px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        width: 100px;
+      }
+      #navbar a:hover {
+        border-radius: 20px;
+        background-color: rgb(0,121,117);
+      }
+      .leftimg {
+        float:left;
+        margin: 30px 15px 15px 15px;
+       }
+       .rightimg  {
+        float: right;
+        margin: 15px 0 30px 15px;
+       }
+      p{
+        font-size: 16pt;
+        margin: 15px 15px 15px 15px;
+      }
+      strong{
+        font-size: 18pt;
+      }
+	  .content{
+		  width: 1000px;
+		  margin-left: 15%; 		  
+	  }
